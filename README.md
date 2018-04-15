@@ -73,31 +73,36 @@ from konlpy.utils import pprint
 # 슈퍼딜 상품코드가 저장된 엑셀파일 불러오기
 
 wd = openpyxl.load_workbook('test1.xlsx')
+
 ws = wd.active
+
 alldfcontents = []
 
 for r in ws.rows:
+
     row_index = r[0].row
     kor = r[1].value
     alldfcontents.append(kor)
     if row_index == 40:
         break
+        
 tt = list(filter(None.__ne__, alldfcontents))
 
     
 # 파싱을 받는 부분
 
 def Superdeal(a):   
-    print("wait pleas.....")
-    driver = webdriver.Chrome('./chromedriver.exe')
-    driver.implicitly_wait(1.5)
-    driver.get('http://mitem.gmarket.co.kr/Item?goodsCode='+ a)
-    time.sleep(1)   
-    driver.find_element_by_xpath('//*[@id="mainTab1"]/button').click()
-    time.sleep(1.5)
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser') 
-    driver.close()
+
+    print("wait pleas.....")    
+    driver = webdriver.Chrome('./chromedriver.exe')    
+    driver.implicitly_wait(1.5)    
+    driver.get('http://mitem.gmarket.co.kr/Item?goodsCode='+ a)    
+    time.sleep(1)       
+    driver.find_element_by_xpath('//*[@id="mainTab1"]/button').click()    
+    time.sleep(1.5)    
+    html = driver.page_source    
+    soup = BeautifulSoup(html, 'html.parser')     
+    driver.close()    
     return soup
 
 
@@ -106,6 +111,7 @@ def Superdeal(a):
 #일반 상품평 숫자 contents6.span.text
 
 def Countt(soup):
+
     contents5 = soup.find('a', { 'id': 'photoReviewTab' })
     contents6 = soup.find('a', { 'id': 'textReviewTab' })
     #print(contents5.span.text, contents6.span.text)
@@ -117,7 +123,8 @@ def Countt(soup):
 #상품평을 가져온다
 
 def Countt2(soup):    
-    #soup = BeautifulSoup(html, 'html.parser')
+
+    #soup = BeautifulSoup(html, 'html.parser')    
     contents0 = soup.find('div', { 'id': 'photoReviewArea' })
     contents02 = contents0.select('ul > li > a')
     dfcontent0 = []
@@ -138,6 +145,7 @@ def Countt2(soup):
 #-*- coding: utf-8 -*-
 
 def monn(dfcontent0):
+
     kkma = Kkma()
     f_pos = open('positive.txt', 'r')
     f_neg = open('negative.txt', 'r')
@@ -186,6 +194,7 @@ def monn(dfcontent0):
 
 
 def getting_list(filename, listname):
+
     kkma = Kkma()
     while 1:
         line = filename.readline()
@@ -205,6 +214,7 @@ def getting_list(filename, listname):
  
  
 def naive_bayes_classifier(test, train, all_count):
+
     counter = 0
     list_count = []
     for i in test:
@@ -228,7 +238,9 @@ def naive_bayes_classifier(test, train, all_count):
 # 최종 데이터프레임 형태 만들기, 엑셀 출력
 
 ala = []
+
 for i in tt:
+
     cc2 = str(i)
     a = Superdeal(cc2)
     q2 =  Countt2(a)
@@ -250,10 +262,14 @@ ala2 = ['code', 'premium-coment', 'text-coment', 'possi-coment', 'pre-coment1','
 df=pd.DataFrame(columns=ala2, data=ala)
 
 dd1 = datetime.today().strftime("%Y%m%d")
+
 dd = str(dd1)
+
 da = './' + dd + '.xlsx'
+
 df.to_excel(da,sheet_name='coupon2',header=True, startrow=1, startcol=1)
 
 print(df)
+
 print ('finished -> ' + da + ' <- check this file')
 
