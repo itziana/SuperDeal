@@ -196,6 +196,7 @@ def monn(dfcontent0):
 
 
 def getting_list(filename, listname):
+
     kkma = Kkma()
     while 1:
         line = filename.readline()
@@ -214,6 +215,7 @@ def getting_list(filename, listname):
     return listname
  
 def naive_bayes_classifier(test, train, all_count):
+
     counter = 0
     list_count = []
     for i in test:
