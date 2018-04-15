@@ -51,6 +51,7 @@
 ### 8. 코드 (SuperDeal-comment.py)
 
 # 패키지 임포트
+
 from selenium import webdriver
 import time 
 import selenium.webdriver
@@ -62,6 +63,7 @@ from konlpy.tag import *
 from konlpy.utils import pprint
 
 # 슈퍼딜 상품코드가 저장된 엑셀파일 불러오기
+
 wd = openpyxl.load_workbook('test1.xlsx')
 ws = wd.active
 alldfcontents = []
@@ -92,28 +94,25 @@ def Superdeal(a):
     return soup
 
 
-def Countt(soup):
-##--> 여기는 상품평 수
-#contents = soup.find('div', { 'class': 'review' })
-    contents5 = soup.find('a', { 'id': 'photoReviewTab' })
-    contents6 = soup.find('a', { 'id': 'textReviewTab' })
 #상품평 숫자를 가져온다
 #프리미엄 상품평 숫자 contents5.span.text
 #일반 상품평 숫자 contents6.span.text
+
+def Countt(soup):
+    contents5 = soup.find('a', { 'id': 'photoReviewTab' })
+    contents6 = soup.find('a', { 'id': 'textReviewTab' })
     #print(contents5.span.text, contents6.span.text)
     countz = [contents5.span.text, contents6.span.text]
     #print(countz)
     return countz
   
-    
-    
+
+#상품평을 가져온다
+
 def Countt2(soup):    
     #soup = BeautifulSoup(html, 'html.parser')
     contents0 = soup.find('div', { 'id': 'photoReviewArea' })
     contents02 = contents0.select('ul > li > a')
-   
-#상품평을 가져온다
-
     dfcontent0 = []
     alldfcontents0 = []
     tdst = []
@@ -122,11 +121,10 @@ def Countt2(soup):
         tds=content00.find_all("p")
         tds.pop(0)
         tds.pop(0)
-        
-
         for td in tds:
             dfcontent0.append(td.text)
     return dfcontent0
+
 
 # 긍정 부정 나누는 부분
 # tag list (보통명사, 동사, 형용사, 보조동사, 명사추정범주) 
@@ -147,11 +145,8 @@ def monn(dfcontent0):
     iii = 0  
     Q = 0
     for T in dfcontent0:
-
         test_s = dfcontent0[Q]
         test_list=kkma.pos(test_s)
-
-
         test_output=[]
         for i in test_list:
             if i[1] == u'SW':
@@ -159,23 +154,15 @@ def monn(dfcontent0):
                     test_output.append(i[0])
             if i[1] in list_tag:
                 test_output.append(i[0])
-
         test_list=kkma.pos(test_s)
-
-
         Q = Q + 1    
-
         list_positive = getting_list(f_pos, list_positive)
         list_negative = getting_list(f_neg, list_negative)
         list_neutral = getting_list(f_neu, list_neutral)
- 
         ALL = len(set(list_positive))+len(set(list_negative))+len(set(list_neutral))
- 
-
         result_pos = naive_bayes_classifier(test_output, list_positive, ALL)
         result_neg = naive_bayes_classifier(test_output, list_negative, ALL)
-        result_neu = naive_bayes_classifier(test_output, list_neutral, ALL)
-    
+        result_neu = naive_bayes_classifier(test_output, list_neutral, ALL)   
         if (result_pos > result_neg and result_pos > result_neu):
             #print ('긍정')
             iii = iii + 1
@@ -186,8 +173,7 @@ def monn(dfcontent0):
             #print ('중립')
             c = 0
     return iii
-    print(iii)
-    
+    print(iii)  
     f_pos.close()
     f_neg.close()
     f_neu.close()
@@ -195,7 +181,6 @@ def monn(dfcontent0):
 
 
 def getting_list(filename, listname):
-
     kkma = Kkma()
     while 1:
         line = filename.readline()
@@ -213,8 +198,8 @@ def getting_list(filename, listname):
             break
     return listname
  
+ 
 def naive_bayes_classifier(test, train, all_count):
-
     counter = 0
     list_count = []
     for i in test:
