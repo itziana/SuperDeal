@@ -44,8 +44,9 @@
  > 4) Java (한국어 형태서 분석을 위한 KoNLPy패키지 사용에 필요)
 
 
-### 7. 코드
+### 7. 코드 (SuperDeal-comment.py)
 
+# 패키지 임포트
 from selenium import webdriver
 import time 
 import selenium.webdriver
@@ -56,7 +57,7 @@ from datetime import datetime
 from konlpy.tag import *
 from konlpy.utils import pprint
 
-
+# 슈퍼딜 상품코드가 저장된 엑셀파일 불러오기
 wd = openpyxl.load_workbook('test1.xlsx')
 ws = wd.active
 alldfcontents = []
@@ -71,10 +72,9 @@ for r in ws.rows:
 tt = list(filter(None.__ne__, alldfcontents))
 
 
-# 슈퍼딜
 
     
-## 여기서부터
+# -> 여기까지가 파싱을 받는 부분
 def Superdeal(a):   
     print("wait pleas.....")
     driver = webdriver.Chrome('./chromedriver.exe')
@@ -88,7 +88,7 @@ def Superdeal(a):
     driver.close()
     #print (soup)
     return soup
-## -> 여기까지가 파싱을 받는 부분
+
 
 def Countt(soup):
 ##--> 여기는 상품평 수
@@ -120,7 +120,8 @@ def Countt2(soup):
         tds=content00.find_all("p")
         tds.pop(0)
         tds.pop(0)
-# 옵션,상품평 제목을 지운다
+        
+
         for td in tds:
             dfcontent0.append(td.text)
     #print(dfcontent0)
@@ -142,14 +143,11 @@ def Countt2(soup):
 
 #엑셀에 있는 상품 코드를 최대 40개까지 들고와서, 빈칸은 없앤다
 
-
 #긍정수 카운트
-## 긍정 부정 나누는 부분
+# 긍정 부정 나누는 부분
 
 #-*- coding: utf-8 -*-
  
-
-
 def monn(dfcontent0):
 # get the data
 # tag list (보통명사, 동사, 형용사, 보조동사, 명사추정범주) 
