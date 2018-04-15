@@ -168,7 +168,7 @@ def monn(dfcontent0):
 
         test_s = dfcontent0[Q]
         test_list=kkma.pos(test_s)
-    #test_list=kkma.pos(dfcontent0)
+
 
         test_output=[]
         for i in test_list:
@@ -180,8 +180,7 @@ def monn(dfcontent0):
 
         test_list=kkma.pos(test_s)
 
-    #print(test_s)
-    #print(test_list)
+
         Q = Q + 1    
 
         list_positive = getting_list(f_pos, list_positive)
@@ -252,15 +251,6 @@ def naive_bayes_classifier(test, train, all_count):
     for i in range(len(list_naive)):
         result *= float(round(list_naive[i], 6))
     return float(result)*float(1.0/3.0)
-    
-#a = Superdeal()
-#a
-#Countt(a)
-#Countt2(a)
-
-#dfcontent0 =  Countt2(a)
-#qq = Countt(a) + Countt2(a)
-#print(qq)
 
 
 #웹드라이버로 TT를 가져와서 CC2로 하나씩 넘겨 실행 시킨다
@@ -268,7 +258,7 @@ def naive_bayes_classifier(test, train, all_count):
 ala = []
 for i in tt:
     cc2 = str(i)
-#    ala.append(Superdeal(cc2))
+
     a = Superdeal(cc2)
     q2 =  Countt2(a)
     #print(q2)
@@ -276,7 +266,7 @@ for i in tt:
     ee = str(cc)
     cc2 =  Countt(a)
     #print(cc2)
-#+ dfcontent0
+
     cc2.extend(ee)
     yy = cc2
     yy.extend(q2)
