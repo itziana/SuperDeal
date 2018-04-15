@@ -71,8 +71,6 @@ for r in ws.rows:
         break
 tt = list(filter(None.__ne__, alldfcontents))
 
-
-
     
 # -> 여기까지가 파싱을 받는 부분
 def Superdeal(a):   
@@ -124,21 +122,7 @@ def Countt2(soup):
 
         for td in tds:
             dfcontent0.append(td.text)
-    #print(dfcontent0)
     return dfcontent0
-    
-#check = ['709183717',contents5.span.text,contents6.span.text]
-#driver.close()
-   
-#a = Superdeal()
-#a
-#Countt(a)
-#Countt2(a)
-
-#dfcontent0 =  Countt2(a)
-#qq = Countt(a) + Countt2(a)
-#print(qq)
-
 
 
 #엑셀에 있는 상품 코드를 최대 40개까지 들고와서, 빈칸은 없앤다
@@ -149,7 +133,6 @@ def Countt2(soup):
 #-*- coding: utf-8 -*-
  
 def monn(dfcontent0):
-# get the data
 # tag list (보통명사, 동사, 형용사, 보조동사, 명사추정범주) 
 # 참고 : https://docs.google.com/spreadsheets/d/1OGAjUvalBuX-oZvZ_-9tEfYD2gQe7hTGsgUpiiBSXI8/edit#gid=0
     kkma = Kkma()
@@ -258,15 +241,12 @@ def naive_bayes_classifier(test, train, all_count):
 ala = []
 for i in tt:
     cc2 = str(i)
-
     a = Superdeal(cc2)
     q2 =  Countt2(a)
     #print(q2)
     cc = monn(q2)
     ee = str(cc)
     cc2 =  Countt(a)
-    #print(cc2)
-
     cc2.extend(ee)
     yy = cc2
     yy.extend(q2)
