@@ -77,6 +77,7 @@ tt = list(filter(None.__ne__, alldfcontents))
 
     
 # 파싱을 받는 부분
+
 def Superdeal(a):   
     print("wait pleas.....")
     driver = webdriver.Chrome('./chromedriver.exe')
@@ -88,7 +89,6 @@ def Superdeal(a):
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser') 
     driver.close()
-    #print (soup)
     return soup
 
 
@@ -129,12 +129,11 @@ def Countt2(soup):
     return dfcontent0
 
 # 긍정 부정 나누는 부분
-
-#-*- coding: utf-8 -*-
- 
-def monn(dfcontent0):
 # tag list (보통명사, 동사, 형용사, 보조동사, 명사추정범주) 
 # 참고 : https://docs.google.com/spreadsheets/d/1OGAjUvalBuX-oZvZ_-9tEfYD2gQe7hTGsgUpiiBSXI8/edit#gid=0
+#-*- coding: utf-8 -*-
+
+def monn(dfcontent0):
     kkma = Kkma()
     f_pos = open('positive.txt', 'r')
     f_neg = open('negative.txt', 'r')
@@ -256,11 +255,13 @@ for i in tt:
         
 
 ala2 = ['code', 'premium-coment', 'text-coment', 'possi-coment', 'pre-coment1','pre-coment2', 'pre-coment3', 'pre-coment4', 'pre-coment5', 'pre-coment6', 'pre-coment7', 'pre-coment8', 'pre-coment9', 'pre-coment10']
+
 df=pd.DataFrame(columns=ala2, data=ala)
 dd1 = datetime.today().strftime("%Y%m%d")
 dd = str(dd1)
 da = './' + dd + '.xlsx'
 df.to_excel(da,sheet_name='coupon2',header=True, startrow=1, startcol=1)
+
 print(df)
 print ('finished -> ' + da + ' <- check this file')
 
