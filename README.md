@@ -43,8 +43,12 @@
  > 3) Chrome Webdriver
  > 4) Java (한국어 형태서 분석을 위한 KoNLPy패키지 사용에 필요)
 
+### 7. 사용시 주의사항
+ > 1) 프로그램 작업동안 test1 엑셀파일이 열려있으면 에러가 발생합니다
+ > 2) 기타 작업으로 컴퓨터의 속도가 크게 느려져있다면, 작업간 에러가 발생합니다 (상품VIP페이지를 여는데 1.5초이상 발생시)
+ > 3) 현재 test1 엑셀파일에 작성가능한 상품코드수는 1회 40개입니다 (변경가능)
 
-### 7. 코드 (SuperDeal-comment.py)
+### 8. 코드 (SuperDeal-comment.py)
 
 # 패키지 임포트
 from selenium import webdriver
@@ -72,7 +76,7 @@ for r in ws.rows:
 tt = list(filter(None.__ne__, alldfcontents))
 
     
-# -> 여기까지가 파싱을 받는 부분
+# 파싱을 받는 부분
 def Superdeal(a):   
     print("wait pleas.....")
     driver = webdriver.Chrome('./chromedriver.exe')
@@ -124,10 +128,6 @@ def Countt2(soup):
             dfcontent0.append(td.text)
     return dfcontent0
 
-
-#엑셀에 있는 상품 코드를 최대 40개까지 들고와서, 빈칸은 없앤다
-
-#긍정수 카운트
 # 긍정 부정 나누는 부분
 
 #-*- coding: utf-8 -*-
