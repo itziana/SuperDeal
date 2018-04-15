@@ -195,7 +195,6 @@ def monn(dfcontent0):
     f_test.close()
 
 
-#make lists
 def getting_list(filename, listname):
     kkma = Kkma()
     while 1:
@@ -214,7 +213,6 @@ def getting_list(filename, listname):
             break
     return listname
  
-#naive bayes classifier + smoothing
 def naive_bayes_classifier(test, train, all_count):
     counter = 0
     list_count = []
@@ -236,7 +234,7 @@ def naive_bayes_classifier(test, train, all_count):
     return float(result)*float(1.0/3.0)
 
 
-#웹드라이버로 TT를 가져와서 CC2로 하나씩 넘겨 실행 시킨다
+# 최종 데이터프레임 형태 만들기, 엑셀 출력
 
 ala = []
 for i in tt:
