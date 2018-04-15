@@ -53,13 +53,21 @@
 # 패키지 임포트
 
 from selenium import webdriver
+
 import time 
+
 import selenium.webdriver
+
 from bs4 import BeautifulSoup
+
 import openpyxl
+
 import pandas as pd
+
 from datetime import datetime
+
 from konlpy.tag import *
+
 from konlpy.utils import pprint
 
 # 슈퍼딜 상품코드가 저장된 엑셀파일 불러오기
