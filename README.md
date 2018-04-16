@@ -53,21 +53,21 @@
 *감정 분석 부분은 아래 경로의 소스코드를 일부 수정해 적용했습니다
   http://newpower.tistory.com/127
 
- > 1) 사용언어 : Python 3.6
+ > a) 사용언어 : Python 3.6
  
- > 2) 패키지 : Selenium, time, BeautifulSoup, openpyxl, pandas, datetime, konlpy
+ > b) 패키지 : Selenium, time, BeautifulSoup, openpyxl, pandas, datetime, konlpy
  
- > 3) Chrome Webdriver
+ > c) Chrome Webdriver
  
- > 4) Java (한국어 형태서 분석을 위한 KoNLPy패키지 사용에 필요)
+ > d) Java (한국어 형태서 분석을 위한 KoNLPy패키지 사용에 필요)
 
 ### 7. 사용시 주의사항
 ---------------------------------------
- > 1) 프로그램 작업동안 test1 엑셀파일이 열려있으면 에러가 발생합니다
+ > a) 프로그램 작업동안 test1 엑셀파일이 열려있으면 에러가 발생합니다
  
- > 2) 기타 작업으로 컴퓨터의 속도가 크게 느려져있다면, 작업간 에러가 발생합니다 (상품VIP페이지를 여는데 1.5초이상 발생시)
+ > b) 기타 작업으로 컴퓨터의 속도가 크게 느려져있다면, 작업간 에러가 발생합니다 (상품VIP페이지를 여는데 1.5초이상 발생시)
  
- > 3) 현재 test1 엑셀파일에 작성가능한 상품코드수는 1회 40개입니다 (변경가능)
+ > c) 현재 test1 엑셀파일에 작성가능한 상품코드수는 1회 40개입니다 (변경가능)
 
 ### 8. 코드 (SuperDeal-comment.py)
 ---------------------------------------
