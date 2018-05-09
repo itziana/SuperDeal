@@ -1,7 +1,7 @@
 
-# 버전 0.2도 확인해보세요!!
+# 버전 0.2이 새로 나왔습니다!!
 ==========>>>> 
-# [EXE파일로 어떤 윈도우에서도 OK, SuperDeal 크롤링 버전 0.2 클릭!!](https://github.com/itziana/SuperDeal2).
+# [EXE파일로 파이써니 없어도 OK, SuperDeal크롤링 버전 0.2 !!](https://github.com/itziana/SuperDeal2).
 
 # 버전 0.2 변경사항
 > 1) 파이썬이 설치되지 않은 컴퓨터에서도 EXE 실행파일로 사용이 가능
