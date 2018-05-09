@@ -1,7 +1,7 @@
 
 # 버전 0.2도 확인해보세요!!
 ================================>>>> 
-[EXE파일로 어떤 윈도우에서도 OK, SuperDeal 크롤링 버전 0.2가 나왔습니다! 페이지 바로가기 클릭!!](https://github.com/itziana/SuperDeal2).
+[EXE파일로 어떤 윈도우에서도 OK, SuperDeal 크롤링 버전 0.2 클릭!!](https://github.com/itziana/SuperDeal2).
 
 # 버전 0.2 변경사항
 > 1) 파이썬이 설치되지 않은 컴퓨터에서도 EXE 실행파일로 사용이 가능
@@ -95,46 +95,34 @@
 ### 8. 코드 (SuperDeal-comment.py)
 ---------------------------------------
 # 패키지 임포트
-
+```  
 from selenium import webdriver
-
 import time 
-
 import selenium.webdriver
-
 from bs4 import BeautifulSoup
-
 import openpyxl
-
 import pandas as pd
-
 from datetime import datetime
-
 from konlpy.tag import *
-
 from konlpy.utils import pprint
+```  
 
 # 슈퍼딜 상품코드가 저장된 엑셀파일 불러오기
-
+```  
 wd = openpyxl.load_workbook('test1.xlsx')
-
 ws = wd.active
-
 alldfcontents = []
-
 for r in ws.rows:
-
     row_index = r[0].row
     kor = r[1].value
     alldfcontents.append(kor)
     if row_index == 40:
         break
-        
 tt = list(filter(None.__ne__, alldfcontents))
-
+```  
     
 # 파싱을 받는 부분
-
+```  
 def Superdeal(a):   
 
     print("wait pleas.....")    
@@ -277,14 +265,12 @@ def naive_bayes_classifier(test, train, all_count):
     for i in range(len(list_naive)):
         result *= float(round(list_naive[i], 6))
     return float(result)*float(1.0/3.0)
-
+```  
 
 # 최종 데이터프레임 형태 만들기, 엑셀 출력
-
+```  
 ala = []
-
 for i in tt:
-
     cc2 = str(i)
     a = Superdeal(cc2)
     q2 =  Countt2(a)
@@ -298,22 +284,12 @@ for i in tt:
     yy.insert(0, i)
     print(yy)
     ala.append(yy)
-        
-
 ala2 = ['code', 'premium-coment', 'text-coment', 'possi-coment', 'pre-coment1','pre-coment2', 'pre-coment3', 'pre-coment4', 'pre-coment5', 'pre-coment6', 'pre-coment7', 'pre-coment8', 'pre-coment9', 'pre-coment10']
-
-
 df=pd.DataFrame(columns=ala2, data=ala)
-
 dd1 = datetime.today().strftime("%Y%m%d")
-
 dd = str(dd1)
-
 da = './' + dd + '.xlsx'
-
 df.to_excel(da,sheet_name='coupon2',header=True, startrow=1, startcol=1)
-
 print(df)
-
 print ('finished -> ' + da + ' <- check this file')
 
